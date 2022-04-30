@@ -1,19 +1,28 @@
 function configureListeners() {
-    let images = // select img elements  
+    // select img elements
+    let images = document.getElementsByTagName('img');  
 
 
      for (var i = 0; i < images.length; i++) {        
-        // iterate over images and add mouseover event listeners      
+        // iterate over images and add mouseover event listeners
+        document.getElementById(images[i].id).addEventListener('mouseover', addOpacity, false);
+        document.getElementById(images[i].id).addEventListener('mouseout', removeOpacity, false);      
     } 
 }
 
 function addOpacity(event) {
     // add appropriate CSS class
+    if (this.classList.contains('dim')){
+        this.classList.add('dim');
+    }
     getProductInfo(event.target.id);     
 }
 
 function removeOpacity(event) {
      //remove appropriate CSS class
+     if (this.classList.contains('dim')){
+         this.classList.remove('dim');
+     }
 
     let element = document.getElementById('color-price');
         element.textContent = '';
